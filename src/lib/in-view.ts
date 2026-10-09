@@ -17,3 +17,18 @@ export function whenInView(
   observer.observe(element);
   return () => observer.disconnect();
 }
+
+// Reports how much of the element is on screen (0 to 1) every time that changes, so an animation can follow the scroll.
+// Like whenInView it asks the browser instead of reading scroll positions, so it cannot drift out of place.
+export function trackInView(
+  element: Element,
+  onRatio: (ratio: number) => void,
+) {
+  const steps = Array.from({ length: 51 }, (_, index) => index / 50);
+  const observer = new IntersectionObserver(
+    ([entry]) => onRatio(entry.intersectionRatio),
+    { threshold: steps },
+  );
+  observer.observe(element);
+  return () => observer.disconnect();
+}

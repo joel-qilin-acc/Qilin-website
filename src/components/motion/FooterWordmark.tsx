@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, motionOk, padMasks, SplitText, useGSAP } from "@/lib/gsap";
-import { whenInView } from "@/lib/in-view";
+import { trackInView, whenInView } from "@/lib/in-view";
 
 // The lower end of the Q’s tail, as a band that follows the stroke (percent of the glyph box). The bowl keeps everything else.
 const tailPoints = "65.7% 84.3%, 75.7% 77%, 98.6% 101.2%, 88.5% 108.5%";
@@ -40,6 +40,30 @@ function liftQTail(letter: HTMLElement | undefined) {
   });
 }
 
+type Letters = ReturnType<typeof prepareLetters>;
+
+// The letters wait below their masks; "rise" brings them up one after another.
+function prepareLetters(element: HTMLElement) {
+  const split = SplitText.create(element, { type: "chars", mask: "chars" });
+  padMasks(split.chars, "0.3em", "0.12em");
+  gsap.set(split.chars, { yPercent: 115 });
+  const rise = gsap.to(split.chars, {
+    yPercent: 0,
+    duration: 1.5,
+    ease: "expo.out",
+    stagger: 0.07,
+    paused: true,
+  });
+  const tail = liftQTail(split.chars[0] as HTMLElement | undefined);
+  return { split, rise, tail };
+}
+
+function cleanUp({ split, rise, tail }: Letters) {
+  rise.kill();
+  tail?.kill();
+  split.revert();
+}
+
 export function FooterWordmark() {
   const ref = useRef<HTMLParagraphElement>(null);
 
@@ -50,36 +74,41 @@ export function FooterWordmark() {
       const media = gsap.matchMedia();
 
       // Sign-off: the wordmark comes up from the bottom when the footer is reached.
-      media.add(motionOk, () => {
-        const split = SplitText.create(element, {
-          type: "chars",
-          mask: "chars",
-        });
-        padMasks(split.chars, "0.3em", "0.12em");
-        // The text slides up from below, letter by letter, the moment it is actually on screen.
-        gsap.set(split.chars, { yPercent: 115 });
-        const rise = gsap.to(split.chars, {
-          yPercent: 0,
-          duration: 1.5,
-          ease: "expo.out",
-          stagger: 0.07,
-          paused: true,
-        });
-        const tail = liftQTail(split.chars[0] as HTMLElement | undefined);
+      media.add(`${motionOk} and (min-width: 768px)`, () => {
+        const letters = prepareLetters(element);
         const stopWatching = whenInView(
           element,
           () => {
-            rise.play();
-            tail?.play();
+            letters.rise.play();
+            letters.tail?.play();
           },
-          // Never more than 40px: on a short phone the page ends before a bigger margin could ever be reached.
           `${Math.round(Math.min(window.innerHeight * 0.22, 40))}px`,
         );
         return () => {
           stopWatching();
-          rise.kill();
-          tail?.kill();
-          split.revert();
+          cleanUp(letters);
+        };
+      });
+
+      // Phones: the page ends right after the wordmark, so it floats up with the thumb instead of at a set moment.
+      media.add(`${motionOk} and (max-width: 767px)`, () => {
+        const letters = prepareLetters(element);
+        let lifted = false;
+        const stopTracking = trackInView(element, (ratio) => {
+          gsap.to(letters.rise, {
+            progress: ratio,
+            duration: 0.35,
+            ease: "power2.out",
+            overwrite: true,
+          });
+          if (ratio > 0.9 && !lifted) {
+            lifted = true;
+            letters.tail?.play();
+          }
+        });
+        return () => {
+          stopTracking();
+          cleanUp(letters);
         };
       });
       return () => media.revert();
@@ -91,7 +120,7 @@ export function FooterWordmark() {
     <p
       ref={ref}
       aria-hidden
-      className="select-none overflow-hidden pb-[0.2em] text-center text-[clamp(4rem,16.5vw,16rem)] font-semibold leading-[0.82] tracking-[-0.06em] text-ink"
+      className="select-none overflow-hidden pb-[0.2em] text-center text-[calc((100vw-2rem)/3.7)] font-semibold leading-[0.82] tracking-[-0.06em] text-ink md:text-[clamp(4rem,16.5vw,16rem)]"
     >
       Qilin Lab
     </p>
