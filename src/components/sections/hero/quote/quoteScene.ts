@@ -1,4 +1,4 @@
-import { formatFull } from "@/lib/format";
+import { formatReach } from "@/lib/format";
 import { gsap } from "@/lib/gsap";
 import { heroQuote } from "@/content/hero-results";
 
@@ -19,7 +19,10 @@ export function createQuoteScene(
   const counter = { value: stat.from };
   const write = () => {
     if (number)
-      number.textContent = formatFull(Math.round(counter.value / 10) * 10);
+      number.textContent = formatReach(
+        Math.round(counter.value / 10) * 10,
+        stat.to,
+      );
   };
   write();
   gsap.set(all("[data-before]"), {

@@ -22,7 +22,7 @@ export function Difference() {
             <p className="mt-5 max-w-[48ch] text-lg leading-relaxed text-muted">
               Watch a busy app struggle, then watch it recover once we fix what
               is slowing it down. No extra servers, no bigger bill. This is how
-              a real project went from 500 to 20k visitors a second.
+              a real project went from 500 to 20k+ visitors a second.
             </p>
             <div className="mt-8">
               <ButtonLink href="/case-studies/ics-mobile">

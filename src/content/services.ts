@@ -55,7 +55,7 @@ export const services: Service[] = [
       { title: "Operate", body: "Monitoring, tuning and on-call, so it keeps working." },
     ],
     proof: [
-      { client: "ICS Mobile", slug: "ics-mobile", text: "500 to 20k TPS" },
+      { client: "ICS Mobile", slug: "ics-mobile", text: "500 to 20k+ TPS" },
       { client: "Spend The Bits", slug: "spend-the-bits", text: "80% to 99.9% uptime" },
       { client: "AlfredX", slug: "alfredx", text: "99.9% across APAC" },
     ],
@@ -100,7 +100,7 @@ export const services: Service[] = [
     intro:
       "We have scaled systems from 3 requests a second to 3,000+, and handled up to 10,000 transactions a second in production. We re-engineer the bottlenecks instead of rewriting the product.",
     capabilities: [
-      { title: "Throughput re-architecture", body: "Event-driven pipelines and parallel workers, as in the 500 to 20k TPS lift." },
+      { title: "Throughput re-architecture", body: "Event-driven pipelines and parallel workers, as in the 500 to 20k+ TPS lift." },
       { title: "Database scaling", body: "Read replicas, sharding, connection pooling and query optimisation." },
       { title: "Event-driven design", body: "Kafka and queue-based architectures that decouple services." },
       { title: "Caching and edge delivery", body: "Multi-tier caching that cuts origin traffic by 70 to 90%." },

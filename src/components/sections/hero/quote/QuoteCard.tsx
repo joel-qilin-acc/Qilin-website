@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { clientLogoBase, clients } from "@/content/clients";
-import { formatFull as format } from "@/lib/format";
+import { formatReach } from "@/lib/format";
 import { heroQuote } from "@/content/hero-results";
 
 const { stat } = heroQuote;
@@ -66,7 +66,7 @@ export function QuoteCard() {
         <div data-line-in className="mt-6 border-t border-line pt-5">
           <p className="flex items-baseline gap-2">
             <span data-stat className="font-figure text-4xl text-ink">
-              {format(stat.to)}
+              {formatReach(stat.to, stat.to)}
             </span>
             <span className="text-sm text-muted">
               {stat.label}, up from 500

@@ -20,7 +20,7 @@ function DifferenceScene() {
       <LoadLabMeters fixes={fixes} rps={rps} />
       <p className="mt-4 text-xs leading-relaxed text-muted">
         Same server, same visitors. Based on a real project that went from 500
-        to 20k visitors a second without adding servers.
+        to 20k+ visitors a second without adding servers.
       </p>
     </div>
   );

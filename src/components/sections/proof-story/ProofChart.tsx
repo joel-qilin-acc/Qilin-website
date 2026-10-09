@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import { formatFull } from "@/lib/format";
+import { formatFull, formatReach } from "@/lib/format";
 import { proof } from "@/content/proof";
 
 type ProofChartProps = {
@@ -18,13 +18,13 @@ export function ProofChart({ numberRef, lineRef, afterRef }: ProofChartProps) {
         ref={numberRef}
         className="mt-3 font-figure text-[5.5rem] leading-none sm:text-[8rem] lg:text-[9.5rem]"
       >
-        {formatFull(proof.after)}
+        {formatReach(proof.after, proof.after)}
       </p>
       <svg
         viewBox="0 0 480 190"
         className="mt-8 h-auto w-full"
         role="img"
-        aria-label="Messages per second rising from 500 to 20,000"
+        aria-label="Messages per second rising from 500 to 20,000+"
       >
         <line
           x1="0"
@@ -63,7 +63,7 @@ export function ProofChart({ numberRef, lineRef, afterRef }: ProofChartProps) {
             textAnchor="end"
             className="fill-surface font-mono text-[11px]"
           >
-            After: {formatFull(proof.after)} a second
+            After: {formatReach(proof.after, proof.after)} a second
           </text>
         </g>
       </svg>

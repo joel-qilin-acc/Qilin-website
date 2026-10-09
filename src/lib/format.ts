@@ -9,3 +9,8 @@ export function formatCount(value: number) {
 export function formatFull(value: number) {
   return Math.round(value).toLocaleString("en-US");
 }
+
+// A figure that keeps counting past what is shown: once the count reaches its goal it reads "20,000+".
+export function formatReach(value: number, goal: number) {
+  return `${formatFull(value)}${value >= goal ? "+" : ""}`;
+}

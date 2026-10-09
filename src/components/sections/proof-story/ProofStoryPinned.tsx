@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
-import { formatFull } from "@/lib/format";
+import { formatReach } from "@/lib/format";
 import { proof } from "@/content/proof";
 import {
   desktopMotion,
@@ -18,7 +18,10 @@ import { ProofCopy } from "./ProofCopy";
 function numberWriter(number: HTMLElement) {
   const counter = { value: proof.before };
   const write = () => {
-    number.textContent = formatFull(Math.round(counter.value / 10) * 10);
+    number.textContent = formatReach(
+      Math.round(counter.value / 10) * 10,
+      proof.after,
+    );
   };
   write();
   return { counter, write };
