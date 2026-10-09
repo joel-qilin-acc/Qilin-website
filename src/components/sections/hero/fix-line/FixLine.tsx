@@ -20,7 +20,7 @@ export function FixLine() {
       <FixCta href={defaultCampaign.primaryCta.href} label="Get yours fixed" />
       <p
         data-hint
-        className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-xs font-medium text-muted shadow-sm"
+        className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 lg:flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-xs font-medium text-muted shadow-sm"
       >
         Scroll to fix it
         <ArrowDown aria-hidden size={14} className="animate-bounce" />

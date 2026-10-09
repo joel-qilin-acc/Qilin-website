@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react/dist/ssr";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { logoSrc } from "@/content/site";
 import type { NavLink } from "@/types/content";
 import { MobileMenuLinks } from "./MobileMenuLinks";
 
@@ -73,8 +75,18 @@ export function MobileMenu({ links }: MobileMenuProps) {
       <div
         ref={panelRef}
         id="mobile-menu"
-        className="fixed inset-0 z-[calc(var(--z-menu)-1)] flex flex-col justify-center gap-2 bg-surface px-8"
+        className="fixed inset-0 z-[calc(var(--z-menu)-1)] flex flex-col bg-surface px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
       >
+        <div className="flex h-16 shrink-0 items-center">
+          <Image
+            src={logoSrc}
+            alt=""
+            width={120}
+            height={20}
+            unoptimized
+            className="brightness-0"
+          />
+        </div>
         <MobileMenuLinks links={links} onNavigate={() => setOpen(false)} />
       </div>
     </div>
