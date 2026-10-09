@@ -4,6 +4,7 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitHeading } from "@/components/motion/SplitHeading";
 import type { LeadVariant } from "@/lib/schemas/lead";
+import { CtaBandLink } from "./CtaBandLink";
 
 type CtaBandProps = {
   title?: string;
@@ -12,12 +13,22 @@ type CtaBandProps = {
   submitLabel?: string;
 };
 
+const defaultTitle = "Tell us what you are scaling.";
+const defaultBody =
+  "Two minutes to describe it. A senior engineer replies within 24 hours, not a sales script.";
+
+// Every page ends by inviting the visitor to talk. The full form lives on the contact page; only the
+// security audit page keeps its own short form, because that request needs a website to look at.
 export function CtaBand({
-  title = "Tell us what you are scaling.",
-  body = "Two minutes to describe it. A senior engineer replies within 24 hours, not a sales script.",
+  title = defaultTitle,
+  body = defaultBody,
   variant = "default",
   submitLabel,
 }: CtaBandProps) {
+  if (variant !== "audit") {
+    return <CtaBandLink title={title} body={body} label={submitLabel} />;
+  }
+
   return (
     <Section id="book" tone="subtle" bot="book">
       <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-20">

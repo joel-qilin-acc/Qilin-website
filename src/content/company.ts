@@ -63,7 +63,7 @@ export const contact = {
   response: "within 24 hours",
 };
 
-export const serviceOptions = ["Development", "DevOps and cloud", "Scalability", "Security audits", "FinOps", "Hiring developers"];
+export const serviceOptions = ["Free 30-minute savings analysis", "Free AWS cost review", "Development", "DevOps and cloud", "Scalability", "Security audits", "FinOps", "Hiring developers"];
 
 export const budgetOptions = ["Under $5K", "$5K to $25K", "$25K to $100K", "$100K+", "Not sure yet"];
 

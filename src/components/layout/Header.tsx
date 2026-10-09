@@ -41,7 +41,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Magnetic strength={0.15}>
             <ButtonLink
-              href="#book"
+              href="/contact"
               className="neon-glow h-11 rounded-full px-5 text-sm font-semibold"
             >
               Book a call

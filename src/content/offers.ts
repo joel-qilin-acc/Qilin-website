@@ -21,7 +21,7 @@ export const offers: Offer[] = [
       "No credit card",
     ],
     cta: "Book my free analysis",
-    href: "#book",
+    href: "/contact",
   },
   {
     id: "aws-review",
@@ -30,6 +30,6 @@ export const offers: Offer[] = [
     body: "A review of how you use AWS, with the biggest savings pointed out in plain language.",
     points: ["No credit card", "No commitment to work with us"],
     cta: "Get my free review",
-    href: "#book",
+    href: "/contact",
   },
 ];

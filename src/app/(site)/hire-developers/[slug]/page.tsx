@@ -33,7 +33,7 @@ export default async function HireRolePage({ params }: PageProps<"/hire-develope
         body={`${role.subheadline} ${role.intro}`}
         actions={
           <Magnetic>
-            <ButtonLink href="#book">Request developers</ButtonLink>
+            <ButtonLink href="/contact">Request developers</ButtonLink>
           </Magnetic>
         }
         aside={

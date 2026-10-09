@@ -4,7 +4,7 @@ export const defaultCampaign = {
   headline: "We fix what slows your business down.",
   mark: "fix",
   body: "Senior engineers who build, fix and protect the software behind your business, and stay accountable for the result.",
-  primaryCta: { label: "Book a call", href: "#book" },
+  primaryCta: { label: "Book a call", href: "/contact" },
   secondaryCta: { label: "See the work", href: "#results" },
 } satisfies CampaignContent;
 
@@ -13,7 +13,7 @@ export const campaigns = {
     headline: "Keep your app running when everyone shows up.",
     mark: "running",
     body: "We fix the slow parts, so busy days and launches stop being stressful.",
-    primaryCta: { label: "Book a call", href: "#book" },
+    primaryCta: { label: "Book a call", href: "/contact" },
     secondaryCta: { label: "See the proof", href: "#proof" },
   },
   security: {

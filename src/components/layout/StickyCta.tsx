@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
 // Hidden wherever a booking prompt is already on screen, and over the footer so it never covers the wordmark.
-const watchedIds = ["hero", "page-hero", "free", "book", "site-footer"];
+const watchedIds = ["hero", "page-hero", "free", "book", "contact-cta", "site-footer"];
 
 type Visibility = {
   ready: boolean;
@@ -44,7 +44,7 @@ export function StickyCta() {
       data-shown={shown}
     >
       <p className="text-sm text-muted">Have a system to fix or scale?</p>
-      <ButtonLink href="#book" className="h-10 px-4 text-sm">
+      <ButtonLink href="/contact" className="h-10 px-4 text-sm">
         Book a call
       </ButtonLink>
     </div>

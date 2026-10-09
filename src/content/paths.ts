@@ -6,7 +6,7 @@ export const pathTiles: PathTileContent[] = [
     label: "Platform",
     title: "Fix and run your software",
     body: "Faster, steadier software and lower cloud bills, for systems that cannot go down.",
-    cta: { label: "Book a call", href: "#book" },
+    cta: { label: "Book a call", href: "/contact" },
   },
   {
     id: "audit",

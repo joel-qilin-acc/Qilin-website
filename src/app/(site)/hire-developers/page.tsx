@@ -24,7 +24,7 @@ export default function HireDevelopersPage() {
         body="A shortlist of vetted engineers in about 48 hours. Month to month, with a 3-day risk-free trial and nothing to pay upfront."
         actions={
           <Magnetic>
-            <ButtonLink href="#book">Request developers</ButtonLink>
+            <ButtonLink href="/contact">Request developers</ButtonLink>
           </Magnetic>
         }
       />
