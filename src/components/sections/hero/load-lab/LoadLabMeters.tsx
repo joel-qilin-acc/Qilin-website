@@ -19,7 +19,7 @@ export function LoadLabMeters({ fixes, rps }: LoadLabMetersProps) {
     level === "critical" ? "danger" : level === "warning" ? "warn" : "accent";
 
   return (
-    <dl className="mt-6 flex justify-between gap-6 lg:justify-start lg:gap-14">
+    <dl className="mt-6 grid grid-cols-3 gap-x-5 lg:grid-cols-[repeat(3,auto)] lg:justify-start lg:gap-x-14">
       <LoadLabMeter
         label="Server load"
         value={`${Math.round(utilization * 100)}%`}

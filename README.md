@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Booking emails
+
+The contact and booking forms (`src/actions/submit-lead.ts`) email the team and send the visitor a confirmation.
+The code is finished; it switches on once the settings in `.env.example` exist as environment variables
+(`RESEND_API_KEY`, `LEAD_EMAIL_TO`, `LEAD_EMAIL_FROM`). Until then a submission still succeeds and only logs a warning.
+Verify the sending domain in Resend before going live. Email goes over Resend's HTTP API on purpose: hosts such as
+Railway block outgoing SMTP on smaller plans.

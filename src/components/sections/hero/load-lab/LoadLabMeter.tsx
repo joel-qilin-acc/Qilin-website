@@ -9,7 +9,7 @@ type LoadLabMeterProps = {
 
 export function LoadLabMeter({ label, value, unit, tone }: LoadLabMeterProps) {
   return (
-    <div>
+    <div className="row-span-3 grid grid-rows-subgrid">
       <dt className="text-xs text-muted">{label}</dt>
       <dd
         className={cn(

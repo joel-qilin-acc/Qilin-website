@@ -72,7 +72,8 @@ export function FooterWordmark() {
             rise.play();
             tail?.play();
           },
-          "22%",
+          // Never more than 40px: on a short phone the page ends before a bigger margin could ever be reached.
+          `${Math.round(Math.min(window.innerHeight * 0.22, 40))}px`,
         );
         return () => {
           stopWatching();

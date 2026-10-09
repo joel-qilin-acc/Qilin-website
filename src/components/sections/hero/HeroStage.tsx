@@ -23,7 +23,7 @@ export function HeroStage({ children }: HeroStageProps) {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-[100dvh] overflow-x-clip pb-[clamp(220px,32vh,320px)] pt-28 lg:pt-28"
+      className="relative min-h-[100dvh] overflow-x-clip pb-[calc(clamp(220px,32vh,320px)+3rem)] pt-28 lg:pb-[clamp(220px,32vh,320px)]"
     >
       {children}
     </section>

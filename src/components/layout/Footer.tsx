@@ -8,7 +8,7 @@ import { FooterGroup } from "./FooterGroup";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-surface-subtle pt-16">
+    <footer id="site-footer" className="relative overflow-hidden border-t border-line bg-surface-subtle pt-16">
       <FooterAurora />
       <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
