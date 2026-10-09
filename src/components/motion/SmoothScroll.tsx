@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { registerLenis } from "@/lib/lenis";
 
 export function SmoothScroll() {
   useEffect(() => {
@@ -10,6 +11,7 @@ export function SmoothScroll() {
 
     // Feel: inertial scrolling makes every scrubbed animation glide instead of stepping.
     const lenis = new Lenis({ anchors: true, lerp: 0.09 });
+    registerLenis(lenis);
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
@@ -39,6 +41,7 @@ export function SmoothScroll() {
       window.removeEventListener("load", refresh);
       window.clearTimeout(timer);
       watcher.disconnect();
+      registerLenis(null);
       lenis.destroy();
     };
   }, []);

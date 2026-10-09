@@ -4,6 +4,7 @@ import { footerGroups, logoSrc } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { FooterAurora } from "@/components/motion/FooterAurora";
 import { FooterWordmark } from "@/components/motion/FooterWordmark";
+import { BackToTop } from "./BackToTop";
 import { FooterGroup } from "./FooterGroup";
 
 export function Footer() {
@@ -38,9 +39,12 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <p className="mt-14 text-sm text-muted">
-          © 2026 Qilin Lab. All rights reserved.
-        </p>
+        <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
+          <p className="text-sm text-muted">
+            © 2026 Qilin Lab. All rights reserved.
+          </p>
+          <BackToTop />
+        </div>
       </Container>
       <div className="relative mt-6 px-4 pb-10 md:pb-14">
         <FooterWordmark />

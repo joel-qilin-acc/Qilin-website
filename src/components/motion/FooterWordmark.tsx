@@ -43,7 +43,7 @@ function liftQTail(letter: HTMLElement | undefined) {
 type Letters = ReturnType<typeof prepareLetters>;
 
 // The letters wait below their masks; "rise" brings them up one after another.
-function prepareLetters(element: HTMLElement) {
+function prepareLetters(element: HTMLElement, withTail: boolean) {
   const split = SplitText.create(element, { type: "chars", mask: "chars" });
   padMasks(split.chars, "0.3em", "0.12em");
   gsap.set(split.chars, { yPercent: 115 });
@@ -54,7 +54,9 @@ function prepareLetters(element: HTMLElement) {
     stagger: 0.07,
     paused: true,
   });
-  const tail = liftQTail(split.chars[0] as HTMLElement | undefined);
+  const tail = withTail
+    ? liftQTail(split.chars[0] as HTMLElement | undefined)
+    : null;
   return { split, rise, tail };
 }
 
@@ -75,7 +77,7 @@ export function FooterWordmark() {
 
       // Sign-off: the wordmark comes up from the bottom when the footer is reached.
       media.add(`${motionOk} and (min-width: 768px)`, () => {
-        const letters = prepareLetters(element);
+        const letters = prepareLetters(element, true);
         const stopWatching = whenInView(
           element,
           () => {
@@ -92,8 +94,8 @@ export function FooterWordmark() {
 
       // Phones: the page ends right after the wordmark, so it floats up with the thumb instead of at a set moment.
       media.add(`${motionOk} and (max-width: 767px)`, () => {
-        const letters = prepareLetters(element);
-        let lifted = false;
+        // No tail flick here: the split Q shows a seam at phone sizes, so the Q stays whole.
+        const letters = prepareLetters(element, false);
         const stopTracking = trackInView(element, (ratio) => {
           gsap.to(letters.rise, {
             progress: ratio,
@@ -101,10 +103,6 @@ export function FooterWordmark() {
             ease: "power2.out",
             overwrite: true,
           });
-          if (ratio > 0.9 && !lifted) {
-            lifted = true;
-            letters.tail?.play();
-          }
         });
         return () => {
           stopTracking();
