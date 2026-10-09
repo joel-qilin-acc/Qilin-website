@@ -19,8 +19,8 @@ function DifferenceScene() {
       <DropOffBanner fixes={fixes} rps={rps} />
       <LoadLabMeters fixes={fixes} rps={rps} />
       <p className="mt-4 text-xs leading-relaxed text-muted">
-        Same server, same visitors. Based on a real project that went from 500 to 3,000 visitors a second without adding
-        servers.
+        Same server, same visitors. Based on a real project that went from 500
+        to 20k visitors a second without adding servers.
       </p>
     </div>
   );

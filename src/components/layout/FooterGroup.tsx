@@ -13,7 +13,10 @@ export function FooterGroup({ title, links }: FooterGroupProps) {
       <ul className="mt-4 space-y-3">
         {links.map((link) => (
           <li key={link.label}>
-            <Link href={link.href} className="text-[15px] text-muted transition-colors hover:text-ink">
+            <Link
+              href={link.href}
+              className="text-[15px] text-muted transition-colors hover:text-ink"
+            >
               {link.label}
             </Link>
           </li>

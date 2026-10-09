@@ -11,7 +11,10 @@ type Visibility = {
 };
 
 export function StickyCta() {
-  const [visibility, setVisibility] = useState<Visibility>({ ready: false, ids: [] });
+  const [visibility, setVisibility] = useState<Visibility>({
+    ready: false,
+    ids: [],
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

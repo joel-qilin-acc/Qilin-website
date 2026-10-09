@@ -2,8 +2,8 @@ import { capacityFor, utilizationFor, type FixId } from "./model";
 import { layoutFor, type Layout } from "./layout";
 import { advanceParticle, createParticle, type Particle } from "./particles";
 
-// One drawn particle stands for 20 requests per second.
-const requestsPerParticle = 20;
+// One drawn particle stands for 200 requests per second.
+const requestsPerParticle = 200;
 const maxQueue = 26;
 const maxParticles = 420;
 
@@ -14,7 +14,7 @@ export class LoadSimulation {
   particles: Particle[] = [];
   queue = 0;
   fixes: FixId[] = [];
-  rps = 1000;
+  rps = 10000;
   utilization = 0;
   serverGlow = 0;
   alarmPhase = 0;

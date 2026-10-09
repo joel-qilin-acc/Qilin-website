@@ -22,7 +22,7 @@ export function CtaBand({
     <Section id="book" tone="subtle" bot="book">
       <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:gap-20">
         <div>
-          <SplitHeading className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance md:text-6xl">
+          <SplitHeading className="text-4xl font-bold leading-[1.05] tracking-[-0.035em] text-balance md:text-6xl">
             {title}
           </SplitHeading>
           <Reveal>

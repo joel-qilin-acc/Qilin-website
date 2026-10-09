@@ -1,10 +1,10 @@
+import { formatFull } from "@/lib/format";
 import { gsap } from "@/lib/gsap";
 import { heroQuote } from "@/content/hero-results";
 
 type Timeline = gsap.core.Timeline;
 
 const { stat } = heroQuote;
-const format = (value: number) => Math.round(value).toLocaleString("en-US");
 const off = { immediateRender: false };
 
 // The quote performs the story: the "wait" half is struck out and the "delivered" half lights up as you scroll.
@@ -18,7 +18,8 @@ export function createQuoteScene(
   const number = root.querySelector<HTMLElement>("[data-stat]");
   const counter = { value: stat.from };
   const write = () => {
-    if (number) number.textContent = format(counter.value);
+    if (number)
+      number.textContent = formatFull(Math.round(counter.value / 10) * 10);
   };
   write();
   gsap.set(all("[data-before]"), {
@@ -40,6 +41,18 @@ export function createQuoteScene(
       { y: 14, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 },
       0.5,
+    )
+    .fromTo(
+      counter,
+      { value: stat.from },
+      { value: stat.to, duration: 2.6, ease: "power3.out", onUpdate: write },
+      1,
+    )
+    .fromTo(
+      all("[data-bar]"),
+      { scaleX: stat.from / stat.to },
+      { scaleX: 1, duration: 2.6, ease: "power3.out" },
+      1,
     );
 
   story
@@ -54,23 +67,5 @@ export function createQuoteScene(
       { opacity: 0.28, backgroundSize: "0% 38%" },
       { opacity: 1, backgroundSize: "100% 38%", duration: 1.1, ...off },
       0.5,
-    )
-    .fromTo(
-      all("[data-bar]"),
-      { scaleX: stat.from / stat.to },
-      { scaleX: 1, duration: 2, ease: "power2.inOut", ...off },
-      0,
-    )
-    .fromTo(
-      counter,
-      { value: stat.from },
-      {
-        value: stat.to,
-        duration: 2,
-        ease: "power2.inOut",
-        onUpdate: write,
-        ...off,
-      },
-      0,
     );
 }

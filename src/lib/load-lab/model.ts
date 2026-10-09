@@ -10,11 +10,11 @@ export type CostSegment = {
   after: number;
 };
 
-// Real figures from the ICS Mobile migration: one server saturated at 500 TPS, 3,000 TPS after optimisation.
+// Real figures from the ICS Mobile migration: one server saturated at 500 TPS, 20,000 TPS after optimisation.
 export const baseCapacity = 500;
-export const coreCost = 10;
-export const minRps = 100;
-export const maxRps = 3000;
+export const coreCost = 1;
+export const minRps = 500;
+export const maxRps = 20000;
 
 // Illustrative split of the effort a server spends per visitor. The fixes shrink each slice, they do not add machines.
 export const costSegments: CostSegment[] = [
@@ -24,8 +24,8 @@ export const costSegments: CostSegment[] = [
     fix: "Faster data lookups",
     hint: "Pages stop waiting on the database",
     tech: "Query and index tuning",
-    before: 40,
-    after: 3,
+    before: 45,
+    after: 0.54,
   },
   {
     id: "caching",
@@ -33,8 +33,8 @@ export const costSegments: CostSegment[] = [
     fix: "Remember common answers",
     hint: "No rebuilding the same page for every visitor",
     tech: "Caching and edge delivery",
-    before: 26,
-    after: 2,
+    before: 28,
+    after: 0.42,
   },
   {
     id: "async",
@@ -42,8 +42,8 @@ export const costSegments: CostSegment[] = [
     fix: "Do slow jobs in the background",
     hint: "Emails and reports stop holding up customers",
     tech: "Event-driven pipelines",
-    before: 16,
-    after: 1,
+    before: 18,
+    after: 0.3,
   },
   {
     id: "pooling",
@@ -52,7 +52,7 @@ export const costSegments: CostSegment[] = [
     hint: "Less data and fewer handshakes per visit",
     tech: "Connection and payload tuning",
     before: 8,
-    after: 0.67,
+    after: 0.24,
   },
 ];
 

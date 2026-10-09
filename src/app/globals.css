@@ -17,6 +17,8 @@
   --color-warn: #e08a00;
   --color-slow: #ea7a0c;
   --color-slow-ink: #a8540a;
+  --color-neon: #4db8ff;
+  --color-neon-deep: #1f8fe6;
 
   --radius-base: 12px;
 
@@ -28,7 +30,7 @@
 }
 
 :root {
-  --font-body: var(--font-jakarta);
+  --font-body: var(--font-inter);
 }
 
 
@@ -271,5 +273,116 @@ details[name="faq"][open]::details-content {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Neon highlighter: a soft blue swipe behind a key phrase, drawn in once the headline is on screen. */
+.neon-mark {
+  color: var(--color-ink);
+  background-image: linear-gradient(color-mix(in srgb, var(--color-neon) 45%, white), color-mix(in srgb, var(--color-neon) 45%, white));
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.32em;
+  padding: 0 0.1em;
+  margin: 0 -0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .neon-mark {
+    animation: mark-in 1s var(--ease-out-expo) 0.9s both;
+  }
+}
+
+@keyframes mark-in {
+  from {
+    background-size: 0% 0.32em;
+  }
+  to {
+    background-size: 100% 0.32em;
+  }
+}
+
+.neon-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-neon) 40%, transparent),
+    0 10px 36px -10px color-mix(in srgb, var(--color-neon) 55%, transparent);
+}
+
+/* Open panel: a thin neon rim and glow so the open result reads as lit up. */
+.neon-edge {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-neon) 55%, transparent),
+    0 24px 70px -28px color-mix(in srgb, var(--color-neon) 70%, transparent);
+}
+
+.neon-bar {
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-neon) 90%, transparent);
+}
+
+/* Solid variant for dark sections: the lime fills the word, so the dark text is never on a dark background. */
+.neon-mark-solid {
+  background-position: 0 50%;
+  background-size: 100% 100%;
+  padding: 0.02em 0.14em;
+  margin: 0 -0.14em;
+  border-radius: 0.14em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .neon-mark-solid {
+    animation-name: mark-solid-in;
+  }
+}
+
+@keyframes mark-solid-in {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+/* Hatched corner on the work cards: fine diagonal lines in two blues, fading out toward the card centre. */
+.hatch {
+  background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-neon) 90%, transparent) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(135deg, transparent 0 2.5px, color-mix(in srgb, var(--color-accent) 70%, transparent) 2.5px 3.5px, transparent 3.5px 5px);
+  mask-image: linear-gradient(to top left, #000 12%, transparent 72%);
+  pointer-events: none;
+}
+
+/* Scroll-driven sections get their tall height from CSS alone, so the layout never moves after the page loads.
+   Work cards: one screen plus the distance the track pans (cards, gaps, side padding and end padding, minus the screen). */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .work-pan-tall {
+    height: calc(
+      100dvh + var(--cards) * 430px + (var(--cards) - 1) * 16px + max(1.5rem, (100vw - 1200px) / 2 + 1.5rem) + 10vw - 100vw
+    );
+  }
+}
+
+/* Testimonials: one screen plus a slice of scroll for every panel. */
+@media (prefers-reduced-motion: no-preference) {
+  .voices-tall {
+    height: calc(100svh * (1 + var(--panels) * 0.55));
+  }
+}
+
+/* Slow drifting glow blobs (used behind small cards). */
+@media (prefers-reduced-motion: no-preference) {
+  .aurora-drift {
+    animation: aurora-drift 9s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(18px, -22px, 0) scale(1.15);
   }
 }

@@ -7,22 +7,22 @@ export const caseStudies: CaseStudy[] = [
     logo: "ics-mobile.png",
     industry: "Telecom",
     headline: "Messaging that stopped making customers wait",
-    summary: "A Kubernetes migration and a pipeline rebuilt for parallel load took SMS, WhatsApp and RCS from 500 to 3,000 TPS.",
-    metric: { kind: "number", value: 3000, from: 500, label: "messages every second, up from 500" },
+    summary: "A Kubernetes migration and a pipeline rebuilt for parallel load took SMS, WhatsApp and RCS from 500 to 20k TPS.",
+    metric: { kind: "number", value: 20000, from: 500, label: "messages every second, up from 500" },
     challenge:
       "The messaging platform was capped at 500 TPS, with regular complaints about delivery delays across SMS, WhatsApp and RCS. Pipelines ran with no parallelism and the team had little visibility during peak hours.",
     approach: [
       "Complete Kubernetes migration with the pipeline re-architected for parallel processing",
       "End-to-end profiling to find the real bottlenecks",
-      "Event streams with per-channel workers and horizontal autoscaling",
+      "Event streams with per-channel workers written in Go, and horizontal autoscaling",
       "Observability rebuilt on Prometheus and Grafana",
     ],
     results: [
-      "Throughput from 500 to 3,000 TPS, a 6x increase",
+      "Throughput from 500 to 20k TPS, a 40x increase",
       "Customer complaints from regular to zero",
       "Near real-time delivery across every channel",
     ],
-    stack: ["Kubernetes", "Docker", "RabbitMQ", "Node.js", "AWS", "Prometheus", "Grafana"],
+    stack: ["Kubernetes", "Docker", "RabbitMQ", "Go", "Node.js", "AWS", "Prometheus", "Grafana"],
     engagement: "14 months, 5 engineers",
     quote: {
       text: "We went from telling customers to wait to telling them it’s already delivered. That’s the difference Qilin Lab made.",

@@ -1,13 +1,13 @@
 import { CheckCircle, WarningCircle } from "@phosphor-icons/react/dist/ssr";
 import { fixOrder, metersFor, type FixId } from "@/lib/load-lab/model";
 import { cn } from "@/lib/cn";
+import { formatCount } from "@/lib/format";
 
 type DropOffBannerProps = {
   fixes: FixId[];
   rps: number;
 };
 
-const formatter = new Intl.NumberFormat("en-US");
 
 // Says out loud what the picture means: customers leaving, then Qilin Lab fixing that.
 export function DropOffBanner({ fixes, rps }: DropOffBannerProps) {
@@ -26,7 +26,7 @@ export function DropOffBanner({ fixes, rps }: DropOffBannerProps) {
     >
       <Icon aria-hidden size={20} weight="fill" className="shrink-0" />
       {losing
-        ? `Customers are dropping off: ${formatter.format(dropped)} lost every second.`
+        ? `Customers are dropping off: ${formatCount(dropped)} lost every second.`
         : fixed
           ? "Qilin Lab fixed your customer drop-off. Nobody is turned away."
           : "Drop-off is falling as each fix lands."}

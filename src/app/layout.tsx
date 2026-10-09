@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { preconnect } from "react-dom";
 import Script from "next/script";
 import { documentFlagsScript } from "@/lib/document-flags";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"], display: "swap" });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const mono = JetBrains_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   preconnect("https://qilinlab.com");
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} ${mono.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${mono.variable}`}>
       <body>
         <Script id="document-flags" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: documentFlagsScript }} />
         <SmoothScroll />

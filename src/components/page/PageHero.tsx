@@ -17,7 +17,7 @@ export function PageHero({ title, body, actions, aside }: PageHeroProps) {
           <SplitHeading
             as="h1"
             trigger="load"
-            className="max-w-[20ch] text-4xl font-semibold leading-[1.04] tracking-[-0.035em] text-balance sm:text-5xl lg:text-[4rem]"
+            className="max-w-[20ch] text-4xl font-bold leading-[1.04] tracking-[-0.035em] text-balance sm:text-5xl lg:text-[4rem]"
           >
             {title}
           </SplitHeading>

@@ -23,7 +23,7 @@ export function LoadLabProvider({
 }: LoadLabProviderProps) {
   const [timed, setTimed] = useState<FixId[]>([]);
   const [manual, setManual] = useState<FixId[] | null>(null);
-  const [rps, setRps] = useState(1800);
+  const [rps, setRps] = useState(12000);
   const [paused, setPaused] = useState(false);
   const fixes =
     manual ?? (fixCount === undefined ? timed : fixOrder.slice(0, fixCount));

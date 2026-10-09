@@ -7,6 +7,7 @@ export type NavLink = Cta;
 
 export type CampaignContent = {
   headline: string;
+  mark?: string;
   body: string;
   primaryCta: Cta;
   secondaryCta: Cta;

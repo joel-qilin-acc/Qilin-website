@@ -61,7 +61,7 @@ export function FixCta({ href, label }: FixCtaProps) {
     <Link
       data-cta
       href={href}
-      className="pointer-events-auto absolute right-6 top-[calc(68%-92px)] inline-flex h-12 items-center gap-2 rounded-full bg-accent px-6 text-[15px] font-medium text-on-accent shadow-[0_16px_34px_-14px_rgba(30,64,175,0.7)] transition-colors hover:bg-accent-hover lg:right-[max(1.5rem,calc((100vw-1200px)/2+1.5rem))]"
+      className="pointer-events-auto absolute right-6 top-[calc(68%-92px)] inline-flex h-12 items-center gap-2 rounded-full neon-glow bg-accent px-6 text-[15px] font-semibold text-on-accent hover:bg-accent-hover transition-transform duration-200 hover:-translate-y-0.5 lg:right-[max(1.5rem,calc((100vw-1200px)/2+1.5rem))]"
     >
       {label}
       <ArrowRight aria-hidden size={18} weight="bold" />

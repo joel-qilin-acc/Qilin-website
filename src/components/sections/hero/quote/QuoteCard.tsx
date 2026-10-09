@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { clientLogoBase, clients } from "@/content/clients";
+import { formatFull as format } from "@/lib/format";
 import { heroQuote } from "@/content/hero-results";
 
 const { stat } = heroQuote;
 const logoScale =
   clients.find((client) => client.file === heroQuote.logo)?.scale ?? 1;
-const format = (value: number) => Math.round(value).toLocaleString("en-US");
 
 export function QuoteCard() {
   return (

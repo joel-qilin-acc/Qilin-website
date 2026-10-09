@@ -36,6 +36,7 @@ export function HeroStage({ children }: HeroStageProps) {
           start: "top top",
           end: pinLength,
           pin: true,
+          anticipatePin: 1,
           scrub: 0.7,
           animation: story,
         });

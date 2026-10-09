@@ -20,9 +20,25 @@ export function SmoothScroll() {
     document.fonts.ready.then(refresh);
     window.addEventListener("load", refresh);
 
+    // Late images and layout shifts change the page height; pins computed earlier would then sit in the wrong place.
+    let height = document.documentElement.scrollHeight;
+    let timer = 0;
+    const watcher = new ResizeObserver(() => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        const next = document.documentElement.scrollHeight;
+        if (Math.abs(next - height) < 3) return;
+        ScrollTrigger.refresh();
+        height = document.documentElement.scrollHeight;
+      }, 250);
+    });
+    watcher.observe(document.body);
+
     return () => {
       gsap.ticker.remove(tick);
       window.removeEventListener("load", refresh);
+      window.clearTimeout(timer);
+      watcher.disconnect();
       lenis.destroy();
     };
   }, []);

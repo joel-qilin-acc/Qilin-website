@@ -1,3 +1,4 @@
+import { formatCount } from "@/lib/format";
 import { maxRps, minRps } from "@/lib/load-lab/model";
 
 type LoadLabSliderProps = {
@@ -5,7 +6,6 @@ type LoadLabSliderProps = {
   onRpsChange: (rps: number) => void;
 };
 
-const formatter = new Intl.NumberFormat("en-US");
 
 export function LoadLabSlider({ rps, onRpsChange }: LoadLabSliderProps) {
   return (
@@ -18,7 +18,7 @@ export function LoadLabSlider({ rps, onRpsChange }: LoadLabSliderProps) {
           htmlFor="load-lab-rps"
           className="text-sm tabular-nums text-ink"
         >
-          {formatter.format(rps)} visitors a second
+          {formatCount(rps)} visitors a second
         </output>
       </div>
       <input
@@ -26,7 +26,7 @@ export function LoadLabSlider({ rps, onRpsChange }: LoadLabSliderProps) {
         type="range"
         min={minRps}
         max={maxRps}
-        step={50}
+        step={500}
         value={rps}
         onChange={(event) => onRpsChange(Number(event.target.value))}
         className="load-slider mt-3 w-full"

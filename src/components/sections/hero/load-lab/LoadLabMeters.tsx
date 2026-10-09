@@ -1,3 +1,4 @@
+import { formatCount } from "@/lib/format";
 import { metersFor, type FixId } from "@/lib/load-lab/model";
 import { LoadLabMeter } from "./LoadLabMeter";
 
@@ -6,7 +7,6 @@ type LoadLabMetersProps = {
   rps: number;
 };
 
-const formatter = new Intl.NumberFormat("en-US");
 
 function formatWait(latency: number | null) {
   if (latency === null) return "Fails";
@@ -28,7 +28,7 @@ export function LoadLabMeters({ fixes, rps }: LoadLabMetersProps) {
       />
       <LoadLabMeter
         label="Customers dropping off"
-        value={formatter.format(dropped)}
+        value={formatCount(dropped)}
         unit="lost every second"
         tone={dropped > 0 ? "danger" : "quiet"}
       />

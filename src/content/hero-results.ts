@@ -9,5 +9,5 @@ export const heroQuote = {
   link: "to",
   after: "telling them it’s already delivered.",
   tail: "That’s the difference Qilin Lab made.",
-  stat: { from: 500, to: 3000, label: "messages a second" },
+  stat: { from: 500, to: 20000, label: "messages a second" },
 } as const;

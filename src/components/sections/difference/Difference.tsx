@@ -13,7 +13,8 @@ export function Difference() {
         <div>
           <SplitHeading
             as="h2"
-            className="text-3xl font-semibold leading-[1.1] tracking-tight text-balance md:text-4xl lg:text-[2.75rem]"
+            mark="A very different day."
+            className="text-3xl font-bold leading-[1.06] tracking-[-0.035em] text-balance md:text-5xl lg:text-[3.25rem]"
           >
             Same server. Same visitors. A very different day.
           </SplitHeading>
@@ -21,7 +22,7 @@ export function Difference() {
             <p className="mt-5 max-w-[48ch] text-lg leading-relaxed text-muted">
               Watch a busy app struggle, then watch it recover once we fix what
               is slowing it down. No extra servers, no bigger bill. This is how
-              a real project went from 500 to 3,000 visitors a second.
+              a real project went from 500 to 20k visitors a second.
             </p>
             <div className="mt-8">
               <ButtonLink href="/case-studies/ics-mobile">

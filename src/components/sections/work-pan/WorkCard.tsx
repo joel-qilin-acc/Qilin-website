@@ -1,47 +1,90 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { clientLogoBase } from "@/content/clients";
-import { MetricValue } from "@/components/case/MetricValue";
+import { Minus, Plus } from "@phosphor-icons/react/dist/ssr";
+import { cn } from "@/lib/cn";
 import type { CaseStudy } from "@/types/content";
+import { CardDetails } from "./CardDetails";
+import { CardVisual } from "./CardVisual";
 
 type WorkCardProps = {
   study: CaseStudy;
+  index: number;
+  open: boolean;
+  onToggle: () => void;
 };
 
-export function WorkCard({ study }: WorkCardProps) {
+const tints = [
+  "bg-[#e6eefc]",
+  "bg-[#e3f1fb]",
+  "bg-[#e9edfb]",
+  "bg-[#e1f0f6]",
+  "bg-[#e7ecf9]",
+];
+
+export function WorkCard({ study, index, open, onToggle }: WorkCardProps) {
   return (
-    <Link
-      href={`/case-studies/${study.slug}`}
-      className="group flex h-[420px] w-[min(82vw,500px)] shrink-0 snap-start flex-col justify-between rounded-base border border-line bg-surface-subtle p-8 transition-[border-color,background-color] duration-300 hover:border-ink hover:bg-surface"
+    <article
+      data-work-card
+      className={cn(
+        "relative flex h-[min(540px,72svh)] w-[min(84vw,430px)] lg:h-full lg:max-h-[580px] shrink-0 snap-center flex-col overflow-hidden rounded-[28px] p-6 transition-shadow duration-500 sm:p-7",
+        tints[index % tints.length],
+        open &&
+          "shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-neon)_55%,transparent),0_30px_70px_-34px_color-mix(in_srgb,var(--color-neon)_80%,transparent)]",
+      )}
     >
-      <div className="flex items-start justify-between gap-4">
-        <p className="font-mono text-xs text-muted">{study.industry}</p>
-        {study.logo ? (
-          <Image
-            src={`${clientLogoBase}/${study.logo}`}
-            alt=""
-            width={96}
-            height={40}
-            className="h-10 w-24 object-contain opacity-70 grayscale"
-          />
-        ) : null}
-      </div>
-      <div>
-        <MetricValue metric={study.metric} size="md" animate={false} />
-        <p className="mt-2 font-mono text-sm text-muted">{study.metric.label}</p>
-      </div>
-      <div className="flex items-end justify-between gap-6">
+      <span
+        aria-hidden
+        className="hatch absolute bottom-0 right-0 size-[60%]"
+      />
+      <div className="relative flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-xl font-semibold tracking-tight">{study.client}</h3>
-          <p className="mt-2 max-w-[38ch] text-[15px] leading-relaxed text-muted">{study.headline}</p>
+          <p className="font-mono text-xs uppercase tracking-wide text-ink/75">
+            {study.industry}
+          </p>
+          <h3 className="mt-3 max-w-[16ch] text-[1.55rem] font-semibold leading-[1.12] tracking-[-0.03em] text-balance sm:text-[1.75rem]">
+            {study.headline}
+          </h3>
         </div>
-        <ArrowUpRight
-          aria-hidden
-          size={26}
-          className="shrink-0 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-        />
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={open}
+          aria-label={`${open ? "Close" : "Open"} the ${study.client} result`}
+          className={cn(
+            "grid size-11 shrink-0 place-items-center rounded-full border transition-colors duration-300",
+            open
+              ? "border-ink bg-ink text-surface"
+              : "border-ink/70 text-ink hover:bg-ink hover:text-surface",
+          )}
+        >
+          {open ? (
+            <Minus aria-hidden size={18} />
+          ) : (
+            <Plus aria-hidden size={18} />
+          )}
+        </button>
       </div>
-    </Link>
+      <div className="relative mt-auto min-h-0 flex-1 pt-5">
+        <div
+          className={cn(
+            "absolute inset-x-0 bottom-0 transition-[opacity,transform] duration-500 ease-out",
+            open
+              ? "pointer-events-none translate-y-3 opacity-0"
+              : "translate-y-0 opacity-100",
+          )}
+        >
+          <CardVisual study={study} seed={index + 3} />
+        </div>
+        <div
+          inert={!open}
+          className={cn(
+            "absolute inset-0 transition-[opacity,transform] duration-500 ease-out",
+            open
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-3 opacity-0",
+          )}
+        >
+          <CardDetails study={study} />
+        </div>
+      </div>
+    </article>
   );
 }

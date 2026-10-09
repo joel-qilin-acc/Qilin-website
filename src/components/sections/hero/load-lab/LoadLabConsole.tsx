@@ -43,7 +43,7 @@ export function LoadLabConsole() {
       <LoadLabSlider rps={rps} onRpsChange={changeRps} />
       <p className="text-xs leading-relaxed text-muted">
         Illustrative, based on a real project: one server that struggled at 500
-        visitors a second now handles 3,000. We did not add servers.
+        visitors a second now handles 20k. We did not add servers.
       </p>
     </div>
   );

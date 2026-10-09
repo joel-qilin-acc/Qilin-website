@@ -1,16 +1,26 @@
 "use client";
 
 import { useRef } from "react";
+import { MarkedText } from "@/components/ui/MarkedText";
 import { gsap, motionOk, padMasks, SplitText, useGSAP } from "@/lib/gsap";
 
 type SplitHeadingProps = {
   as?: "h1" | "h2" | "h3";
   trigger?: "load" | "scroll";
   className?: string;
+  mark?: string;
+  markSolid?: boolean;
   children: string;
 };
 
-export function SplitHeading({ as: Tag = "h2", trigger = "scroll", className, children }: SplitHeadingProps) {
+export function SplitHeading({
+  as: Tag = "h2",
+  trigger = "scroll",
+  className,
+  mark,
+  markSolid,
+  children,
+}: SplitHeadingProps) {
   const ref = useRef<HTMLHeadingElement>(null);
 
   useGSAP(
@@ -33,13 +43,18 @@ export function SplitHeading({ as: Tag = "h2", trigger = "scroll", className, ch
               duration: 1.1,
               ease: "expo.out",
               stagger: 0.09,
-              scrollTrigger: trigger === "scroll" ? { trigger: element, start: "top 88%", once: true } : undefined,
+              scrollTrigger:
+                trigger === "scroll"
+                  ? { trigger: element, start: "top 88%", once: true }
+                  : undefined,
             });
           },
         });
         return () => split.revert();
       });
-      media.add("(prefers-reduced-motion: reduce)", () => element.setAttribute("data-ready", "true"));
+      media.add("(prefers-reduced-motion: reduce)", () =>
+        element.setAttribute("data-ready", "true"),
+      );
       return () => media.revert();
     },
     { scope: ref },
@@ -47,7 +62,7 @@ export function SplitHeading({ as: Tag = "h2", trigger = "scroll", className, ch
 
   return (
     <Tag ref={ref} data-split className={className}>
-      {children}
+      <MarkedText text={children} mark={mark} solid={markSolid} />
     </Tag>
   );
 }
