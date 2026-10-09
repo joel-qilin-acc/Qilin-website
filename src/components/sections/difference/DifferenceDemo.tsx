@@ -8,13 +8,13 @@ import { DifferenceSwitch } from "./DifferenceSwitch";
 import { DropOffBanner } from "./DropOffBanner";
 
 function DifferenceScene() {
-  const { fixes, rps, paused } = useLoadLab();
+  const { fixes, rps } = useLoadLab();
 
   return (
     <div className="rounded-base border border-line bg-surface p-4 shadow-[0_30px_70px_-36px_rgba(11,18,32,0.35)] sm:p-6">
       <DifferenceSwitch />
       <div className="relative mt-4 aspect-[4/3] w-full overflow-hidden rounded-base bg-surface-subtle">
-        <LoadLabCanvas fixes={fixes} rps={rps} paused={paused} />
+        <LoadLabCanvas fixes={fixes} rps={rps} />
       </div>
       <DropOffBanner fixes={fixes} rps={rps} />
       <LoadLabMeters fixes={fixes} rps={rps} />

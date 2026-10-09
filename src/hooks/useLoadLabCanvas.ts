@@ -7,15 +7,10 @@ import { drawScene } from "@/lib/load-lab/renderer";
 import { readPalette } from "@/lib/load-lab/palette";
 import type { FixId } from "@/lib/load-lab/model";
 
-export function useLoadLabCanvas(fixes: FixId[], rps: number, paused: boolean) {
+export function useLoadLabCanvas(fixes: FixId[], rps: number) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const redrawRef = useRef<() => void>(() => {});
-  const pausedRef = useRef(paused);
   const [simulation] = useState(() => new LoadSimulation());
-
-  useEffect(() => {
-    pausedRef.current = paused;
-  }, [paused]);
 
   useEffect(() => {
     simulation.setInputs(fixes, rps);
@@ -52,7 +47,7 @@ export function useLoadLabCanvas(fixes: FixId[], rps: number, paused: boolean) {
     };
 
     const tick = (time: number, deltaMs: number) => {
-      if (!visible || document.hidden || pausedRef.current) return;
+      if (!visible || document.hidden) return;
       simulation.step(Math.min(deltaMs / 1000, 0.05));
       render();
     };

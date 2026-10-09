@@ -6,12 +6,10 @@ import type { FixId } from "@/lib/load-lab/model";
 export type LoadLabState = {
   fixes: FixId[];
   rps: number;
-  paused: boolean;
   toggleFix: (id: FixId) => void;
   applyAll: () => void;
   reset: () => void;
   changeRps: (rps: number) => void;
-  togglePause: () => void;
 };
 
 export const LoadLabContext = createContext<LoadLabState | null>(null);

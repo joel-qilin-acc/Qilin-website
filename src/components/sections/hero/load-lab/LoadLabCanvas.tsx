@@ -6,11 +6,10 @@ import type { FixId } from "@/lib/load-lab/model";
 type LoadLabCanvasProps = {
   fixes: FixId[];
   rps: number;
-  paused: boolean;
 };
 
-export function LoadLabCanvas({ fixes, rps, paused }: LoadLabCanvasProps) {
-  const canvasRef = useLoadLabCanvas(fixes, rps, paused);
+export function LoadLabCanvas({ fixes, rps }: LoadLabCanvasProps) {
+  const canvasRef = useLoadLabCanvas(fixes, rps);
 
   return (
     <canvas

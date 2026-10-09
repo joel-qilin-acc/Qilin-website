@@ -3,20 +3,10 @@
 import { useLoadLab } from "@/hooks/loadLabContext";
 import { fixOrder } from "@/lib/load-lab/model";
 import { LoadLabFixToggles } from "./LoadLabFixToggles";
-import { LoadLabPauseButton } from "./LoadLabPauseButton";
 import { LoadLabSlider } from "./LoadLabSlider";
 
 export function LoadLabConsole() {
-  const {
-    fixes,
-    rps,
-    paused,
-    toggleFix,
-    applyAll,
-    reset,
-    changeRps,
-    togglePause,
-  } = useLoadLab();
+  const { fixes, rps, toggleFix, applyAll, reset, changeRps } = useLoadLab();
   const allOn = fixes.length === fixOrder.length;
 
   return (
@@ -28,16 +18,13 @@ export function LoadLabConsole() {
             Tap a fix and watch your server cool down.
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={allOn ? reset : applyAll}
-            className="text-sm font-medium text-accent underline decoration-accent/30 underline-offset-[5px] hover:decoration-accent"
-          >
-            {allOn ? "Start over" : "Fix everything"}
-          </button>
-          <LoadLabPauseButton paused={paused} onToggle={togglePause} />
-        </div>
+        <button
+          type="button"
+          onClick={allOn ? reset : applyAll}
+          className="text-sm font-medium text-accent underline decoration-accent/30 underline-offset-[5px] hover:decoration-accent"
+        >
+          {allOn ? "Start over" : "Fix everything"}
+        </button>
       </div>
       <LoadLabFixToggles fixes={fixes} onToggle={toggleFix} />
       <LoadLabSlider rps={rps} onRpsChange={changeRps} />

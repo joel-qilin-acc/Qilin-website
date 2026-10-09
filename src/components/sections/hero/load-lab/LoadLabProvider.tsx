@@ -24,7 +24,6 @@ export function LoadLabProvider({
   const [timed, setTimed] = useState<FixId[]>([]);
   const [manual, setManual] = useState<FixId[] | null>(null);
   const [rps, setRps] = useState(12000);
-  const [paused, setPaused] = useState(false);
   const fixes =
     manual ?? (fixCount === undefined ? timed : fixOrder.slice(0, fixCount));
 
@@ -48,7 +47,6 @@ export function LoadLabProvider({
     () => ({
       fixes,
       rps,
-      paused,
       toggleFix: (id) =>
         setManual((current) => {
           const base = current ?? fixes;
@@ -59,9 +57,8 @@ export function LoadLabProvider({
       applyAll: () => setManual(fixOrder),
       reset: () => setManual([]),
       changeRps: (next) => setRps(next),
-      togglePause: () => setPaused((current) => !current),
     }),
-    [fixes, rps, paused],
+    [fixes, rps],
   );
 
   return (
