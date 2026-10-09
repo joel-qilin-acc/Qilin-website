@@ -6,7 +6,6 @@ import { CaseNarrative } from "@/components/case/CaseNarrative";
 import { CaseQuote } from "@/components/case/CaseQuote";
 import { CaseResults } from "@/components/case/CaseResults";
 import { PageHero } from "@/components/page/PageHero";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -29,7 +28,6 @@ export default async function CaseStudyPage({ params }: PageProps<"/case-studies
       <CaseNarrative study={study} />
       <CaseResults study={study} />
       <CaseQuote study={study} next={nextCase(study.slug)} />
-      <CtaBand />
     </>
   );
 }

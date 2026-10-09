@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/page/PageHero";
+import { Faq } from "@/components/sections/faq/Faq";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -46,6 +47,7 @@ export default function ContactPage() {
           </Reveal>
         </Container>
       </Section>
+      <Faq />
     </>
   );
 }

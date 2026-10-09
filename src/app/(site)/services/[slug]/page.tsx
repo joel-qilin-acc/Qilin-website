@@ -8,7 +8,6 @@ import { LinkRows } from "@/components/page/LinkRows";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
 import { StackChips } from "@/components/page/StackChips";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 import { LoadLabDemo } from "@/components/sections/hero/load-lab/LoadLabDemo";
 import { Process } from "@/components/sections/process/Process";
 
@@ -55,7 +54,6 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           }))}
         />
       </PageSection>
-      <CtaBand />
     </>
   );
 }

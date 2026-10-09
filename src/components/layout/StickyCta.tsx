@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
 // Hidden wherever a booking prompt is already on screen, and over the footer so it never covers the wordmark.
-const watchedIds = ["hero", "page-hero", "free", "book", "contact-cta", "site-footer"];
+const watchedIds = ["hero", "page-hero", "free", "book", "site-footer"];
 
 type Visibility = {
   ready: boolean;

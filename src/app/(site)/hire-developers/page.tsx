@@ -7,7 +7,6 @@ import { LinkRows } from "@/components/page/LinkRows";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
 import { PricingRows } from "@/components/page/PricingRows";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 import { Faq } from "@/components/sections/faq/Faq";
 import { Process } from "@/components/sections/process/Process";
 
@@ -46,11 +45,6 @@ export default function HireDevelopersPage() {
         />
       </PageSection>
       <Faq title="Hiring questions." items={hireRoles[5].faqs} />
-      <CtaBand
-        title="Request developers."
-        body="Tell us what you are building. Get a shortlist of vetted senior developers and a clear quote in about 48 hours."
-        submitLabel="Request developers"
-      />
     </>
   );
 }

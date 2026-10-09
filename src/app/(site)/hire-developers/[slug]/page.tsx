@@ -7,7 +7,6 @@ import { CheckList } from "@/components/page/CheckList";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
 import { StackChips } from "@/components/page/StackChips";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 import { Faq } from "@/components/sections/faq/Faq";
 import { Process } from "@/components/sections/process/Process";
 
@@ -52,11 +51,6 @@ export default async function HireRolePage({ params }: PageProps<"/hire-develope
       </PageSection>
       <Process title="How it starts." steps={hireSteps} body="From brief to a working engineer in about a week." />
       <Faq title="Questions about this role." items={role.faqs} />
-      <CtaBand
-        title="Request developers."
-        body="Tell us what you are building. Get a shortlist and a clear quote in about 48 hours."
-        submitLabel="Request developers"
-      />
     </>
   );
 }

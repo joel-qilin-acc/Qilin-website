@@ -1,8 +1,6 @@
 import { Trace } from "@/components/motion/Trace";
 import { ClientLogos } from "@/components/sections/client-logos/ClientLogos";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 import { Difference } from "@/components/sections/difference/Difference";
-import { Faq } from "@/components/sections/faq/Faq";
 import { Founder } from "@/components/sections/founder/Founder";
 import { Hero } from "@/components/sections/hero/Hero";
 import { Offer } from "@/components/sections/offer/Offer";
@@ -26,8 +24,6 @@ export default function Home({ searchParams }: PageProps<"/">) {
       <Founder />
       <Process />
       <Testimonials />
-      <Faq />
-      <CtaBand />
     </>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { CaseIndex } from "@/components/case/CaseIndex";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 
 export const metadata: Metadata = {
   title: "Case studies",
@@ -19,7 +18,6 @@ export default function CaseStudiesPage() {
       <PageSection>
         <CaseIndex />
       </PageSection>
-      <CtaBand />
     </>
   );
 }

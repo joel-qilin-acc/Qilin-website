@@ -5,7 +5,6 @@ import { CheckList } from "@/components/page/CheckList";
 import { FactRow } from "@/components/page/FactRow";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 import { Founder } from "@/components/sections/founder/Founder";
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ export default function AboutPage() {
       <PageSection tone="subtle" title="Security and compliance.">
         <CheckList items={compliance} />
       </PageSection>
-      <CtaBand />
     </>
   );
 }

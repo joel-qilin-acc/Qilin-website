@@ -3,7 +3,6 @@ import { services } from "@/content/services";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
 import { LinkRows } from "@/components/page/LinkRows";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -26,7 +25,6 @@ export default function ServicesPage() {
           }))}
         />
       </PageSection>
-      <CtaBand />
     </>
   );
 }

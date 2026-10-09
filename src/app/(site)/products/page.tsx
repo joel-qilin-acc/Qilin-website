@@ -4,7 +4,6 @@ import { LinkRows } from "@/components/page/LinkRows";
 import { PageHero } from "@/components/page/PageHero";
 import { PageSection } from "@/components/page/PageSection";
 import { StackChips } from "@/components/page/StackChips";
-import { CtaBand } from "@/components/sections/cta-band/CtaBand";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -30,7 +29,6 @@ export default function ProductsPage() {
       <PageSection tone="subtle" title="What they do.">
         <StackChips items={products.flatMap((product) => product.features)} />
       </PageSection>
-      <CtaBand />
     </>
   );
 }
