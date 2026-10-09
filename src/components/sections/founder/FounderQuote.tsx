@@ -7,7 +7,7 @@ export function FounderQuote() {
       <figcaption className="mt-8 border-t border-line pt-6">
         <p className="font-semibold">Aditya Agarwal, CEO</p>
         <p className="mt-1 max-w-[52ch] text-muted">
-          Cloud architect and security specialist. Author of the AWS Profit Playbook, published by Amazon.
+          Cloud architect and security specialist. Author of the AWS Profit Playbook, published on Amazon.
         </p>
       </figcaption>
     </figure>

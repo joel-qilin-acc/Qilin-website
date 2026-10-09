@@ -65,8 +65,14 @@ export function QuoteCard() {
         </figcaption>
         <div data-line-in className="mt-6 border-t border-line pt-5">
           <p className="flex items-baseline gap-2">
-            <span data-stat className="font-figure text-4xl text-ink">
-              {formatReach(stat.to, stat.to)}
+            <span className="inline-grid font-figure text-4xl text-ink">
+              {/* The finished figure holds the width from the start, so the "+" arriving never moves the label. */}
+              <span aria-hidden className="invisible col-start-1 row-start-1">
+                {formatReach(stat.to, stat.to)}
+              </span>
+              <span data-stat className="col-start-1 row-start-1">
+                {formatReach(stat.to, stat.to)}
+              </span>
             </span>
             <span className="text-sm text-muted">
               {stat.label}, up from 500
