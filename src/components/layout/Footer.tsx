@@ -1,0 +1,34 @@
+import Image from "next/image";
+import Link from "next/link";
+import { footerGroups, logoSrc } from "@/content/site";
+import { Container } from "@/components/ui/Container";
+import { FooterWordmark } from "@/components/motion/FooterWordmark";
+import { FooterGroup } from "./FooterGroup";
+
+export function Footer() {
+  return (
+    <footer className="overflow-hidden border-t border-line bg-surface-subtle pt-16">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
+          <div className="max-w-xs">
+            <Link href="/" aria-label="Qilin Lab home">
+              <Image src={logoSrc} alt="Qilin Lab" width={132} height={22} unoptimized className="brightness-0" />
+            </Link>
+            <p className="mt-5 text-[15px] leading-relaxed text-muted">
+              Senior engineers who build, scale and secure software for growing teams.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
+            {footerGroups.map((group) => (
+              <FooterGroup key={group.title} title={group.title} links={group.links} />
+            ))}
+          </div>
+        </div>
+        <p className="mt-14 text-sm text-muted">© 2026 Qilin Lab. All rights reserved.</p>
+      </Container>
+      <div className="mt-6 px-4">
+        <FooterWordmark />
+      </div>
+    </footer>
+  );
+}
