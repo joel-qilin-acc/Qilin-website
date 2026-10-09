@@ -23,7 +23,7 @@ export function Header() {
       {/* The glass sits on its own layer: a blur on the header itself would trap the full-screen mobile menu inside the bar. */}
       <span
         aria-hidden
-        className="absolute inset-0 -z-10 border-b border-line bg-surface/90 backdrop-blur-xl"
+        className="absolute inset-0 -z-10 border-b border-line bg-surface/95 md:bg-surface/90 md:backdrop-blur-xl"
       />
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="Qilin Lab home">

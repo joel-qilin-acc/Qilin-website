@@ -23,12 +23,10 @@ export function TestimonialPanel({
 
   return (
     <div
-      className={cn(
-        "relative overflow-hidden rounded-base bg-ink transition-[flex-grow,height] duration-[600ms] ease-out",
-        active
-          ? "h-[min(470px,56svh)] lg:h-auto lg:flex-[5]"
-          : "h-20 lg:h-auto lg:flex-[1]",
-      )}
+      data-voice
+      data-active={active}
+      // --a is how open the panel is (0 to 1). The scroll sets it continuously; without scrolling the active one is 1.
+      className="relative h-[calc(5rem_+_(min(470px,56svh)_-_5rem)_*_var(--a))] overflow-hidden rounded-base bg-ink [--a:0] data-[active=true]:[--a:1] lg:h-auto lg:shrink lg:grow-[calc(1_+_4_*_var(--a))] lg:basis-0"
     >
       {showVideo ? (
         <iframe

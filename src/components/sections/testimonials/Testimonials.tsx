@@ -13,6 +13,8 @@ import { createVoiceScene } from "./voiceScene";
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
+  // Set while the scroll-driven version is running; without it (reduced motion) a click just opens the panel.
+  const scrollerRef = useRef<((index: number) => void) | null>(null);
 
   useGSAP(
     () => {
@@ -22,9 +24,15 @@ export function Testimonials() {
       const media = gsap.matchMedia();
 
       // Storytelling: each voice opens in turn while the panel holds still (see voiceScene).
-      media.add("(prefers-reduced-motion: no-preference)", () =>
-        createVoiceScene(section, testimonials.length, setActiveIndex),
-      );
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const panels = gsap.utils.toArray<HTMLElement>("[data-voice]", stage);
+        const scene = createVoiceScene(section, panels, setActiveIndex);
+        scrollerRef.current = scene.scrollToPanel;
+        return () => {
+          scrollerRef.current = null;
+          scene.stop();
+        };
+      });
       return () => media.revert();
     },
     { scope: stageRef },
@@ -50,7 +58,11 @@ export function Testimonials() {
                   key={testimonial.name}
                   testimonial={testimonial}
                   active={index === activeIndex}
-                  onActivate={() => setActiveIndex(index)}
+                  onActivate={() =>
+                    scrollerRef.current
+                      ? scrollerRef.current(index)
+                      : setActiveIndex(index)
+                  }
                 />
               ))}
             </Reveal>

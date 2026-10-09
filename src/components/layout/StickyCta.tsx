@@ -40,7 +40,7 @@ export function StickyCta() {
   return (
     <div
       aria-hidden={!shown}
-      className="fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[var(--z-sticky-cta)] mx-auto flex max-w-md items-center justify-between gap-4 rounded-base border border-line bg-surface/90 p-2 pl-5 shadow-[0_8px_30px_-12px_rgba(15,18,24,0.25)] backdrop-blur-md transition-[opacity,transform] duration-300 data-[shown=false]:pointer-events-none data-[shown=false]:translate-y-6 data-[shown=false]:opacity-0"
+      className="fixed inset-x-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[var(--z-sticky-cta)] mx-auto flex max-w-md items-center justify-between gap-4 rounded-base border border-line bg-surface/95 p-2 pl-5 shadow-[0_8px_30px_-12px_rgba(15,18,24,0.25)] md:bg-surface/90 md:backdrop-blur-md transition-[opacity,transform] duration-300 data-[shown=false]:pointer-events-none data-[shown=false]:translate-y-6 data-[shown=false]:opacity-0"
       data-shown={shown}
     >
       <p className="text-sm text-muted">Have a system to fix or scale?</p>
